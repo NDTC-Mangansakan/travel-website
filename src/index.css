@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html{
+  scroll-padding-top: 10vh;
+  scroll-behavior: smooth;
+}
+
+@theme{
+  --breakpoint-xs:475px;
+}
+
+/* Utilities */
+@utility section-title{
+  @apply text-4xl font-bold text-center lg:text-5xl;
+}
+
+/*Navbar*/
+@utility nav-css{
+  @apply bg-white text-black dark:bg-gray-800 dark:text-white fixed left-0 right-0 top-0 z-99 transition-all duration-200;
+}
+
+.link{
+  position: relative;
+}
+
+.link::after{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left:0;
+  height: 3px;
+  width: 0;
+  background-color: red;
+  transition: width .2s;
+}
+
+.link:hover::after{
+  width: 70%;
+}
+
+.link.active-link::after{
+  width: 70%;
+}
+
+/* Home */
+section#home{
+  background-image: url('./src/assets/img/home-bg.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.blur-bg{
+  @apply absolute top-0 left-0 right-0 bottom-0 bg-transparent backdrop-blur-sm mt-[10vh];
+}
+
+/* Destination */
+
+#destination-1{
+  background-image: url('./src/assets/img/destination-img-1.png');
+  background-size: cover;
+  background-position: center;
+}
+
+#destination-2{
+  background-image: url('./src/assets/img/destination-img-2.png');
+  background-size: cover;
+  background-position: center;
+}
+
+#destination-3{
+  background-image: url('./src/assets/img/destination-img-3.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Testimonials */
+
