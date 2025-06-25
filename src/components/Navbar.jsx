@@ -14,15 +14,20 @@ const Navbar = () => {
         const handleNavLinkCss = () => {
             const links = document.querySelectorAll('.link')
             const screenY = Math.ceil(window.scrollY)
-            console.log(screenY, links)
 
             links.forEach(link => {
-                // Home link
-                if(screenY < 370 && link.textContent.includes('Home')){
-                    link.classList.toggle('active-link')
-                }
-                else if (screenY >= 370 && link.textContent.includes('Destination')) {
-                    link.classList.toggle('active-link')
+                const section = document.querySelector(link.getAttribute('href'));
+                if (section) {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+
+                    console.log(screenY, sectionTop, sectionHeight)
+
+                    if (screenY >= sectionTop - 100 && screenY <= sectionTop + sectionHeight - 100) {
+                        link.classList.add('active-link');
+                    } else {
+                        link.classList.remove('active-link');
+                    }
                 }
             })
             
